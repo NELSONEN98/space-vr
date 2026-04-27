@@ -33,7 +33,7 @@ export default function ContactSection() {
   const validar = () => {
     const e = {};
     if (!form.nombre.trim())   e.nombre   = 'El nombre es obligatorio.';
-    if (!form.contacto.trim()) e.contacto = 'El número o email es obligatorio.';
+    if (!form.contacto.trim()) e.contacto = 'El número o email es obligatorio. ';
     return e;
   };
 
