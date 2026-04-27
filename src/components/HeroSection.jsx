@@ -40,7 +40,7 @@ export default function HeroSection() {
         loop
         playsInline
         className={styles.heroBg}
-        src="/videos/glitch-hero.mp4"
+        src="https://res.cloudinary.com/dmwpek0ve/video/upload/q_auto/f_auto/v1777326791/glitch-hero_y3xmim.mp4"
       />
       <div className={styles.heroOverlay} />
 
