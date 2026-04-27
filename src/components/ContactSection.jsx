@@ -177,7 +177,7 @@ export default function ContactSection() {
             <h3 className={styles.modalTitulo}>¡TRANSMISIÓN EXITOSA!</h3>
             <p className={styles.modalTexto}>
               Recibimos tu mensaje correctamente.<br />
-              Nos contactaremos contigo a la brevedad.
+              Nos contactaremos contigo a la brevedad
             </p>
             <button className={styles.modalBoton} onClick={cerrarModal}>
               ▶ VOLVER AL INICIO
