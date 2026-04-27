@@ -1,0 +1,116 @@
+/* Reset moderno + tipografía base en rem */
+:root {
+  /* Base tipográfica: 1rem = 10px (fácil de calcular) */
+  font-size: 62.5%; /* 62.5% de 16px ≈ 10px */
+
+  /* Paleta gaming · cyber-neon */
+  --color-bg: #050814;
+  --color-bg-secondary: #0A0F26;
+  --color-bg-tertiary: #0F1640;
+  --color-accent: #00F0FF;          /* cyan neon — primario */
+  --color-accent-2: #FF00AA;        /* magenta neon — secundario */
+  --color-accent-3: #B829FF;        /* violeta — terciario */
+  --color-warning: #FFE600;         /* amarillo HUD */
+  --color-accent-glow: rgba(0, 240, 255, 0.18);
+  --color-magenta-glow: rgba(255, 0, 170, 0.18);
+  --color-text: #E8F4FF;
+  --color-text-secondary: #6B85B8;
+  --border-accent: rgba(0, 240, 255, 0.35);
+  --border-magenta: rgba(255, 0, 170, 0.35);
+
+  /* Legado / overrides */
+  --button-main-color: #00F0FF;
+  --button-hover-color: #FF00AA;
+  --button-hover-color-purple: #B829FF;
+
+  /* Tipografía */
+  --font-family: 'Inter', system-ui, sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+}
+
+/* Scan lines globales sutiles — efecto CRT */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 240, 255, 0.025) 0px,
+    rgba(0, 240, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body general */
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem; /* 16px */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Quitar estilos por defecto de listas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Quitar subrayado y color por defecto en enlaces */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hacer imágenes responsivas */
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Quitar bordes de inputs y botones */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Quitar comportamiento por defecto de animaciones en móviles */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

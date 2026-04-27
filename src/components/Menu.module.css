@@ -1,0 +1,109 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.6rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5, 8, 20, 0.85);
+  backdrop-filter: blur(14px);
+ 
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.08);
+}
+
+.logoLink {
+  text-decoration: none;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo::before {
+  content: '◆';
+  color: var(--color-accent-2);
+  font-size: 1.4rem;
+  text-shadow: 0 0 8px rgba(255, 0, 170, 0.6);
+}
+
+.menuGrid {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: center;
+}
+
+.menuItem {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  position: relative;
+}
+
+.menuItem::before {
+  content: '[';
+  margin-right: 0.4rem;
+  color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.menuItem::after {
+  content: ']';
+  margin-left: 0.4rem;
+  color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.menuItem:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+.menuItem:hover::before,
+.menuItem:hover::after {
+  opacity: 1;
+}
+
+.menuCta {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 1rem 2rem;
+  color: var(--color-bg);
+  background: var(--color-accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
+  border: none;
+  position: relative;
+}
+
+.menuCta:hover {
+  background: var(--color-accent-2);
+  color: var(--color-text);
+  box-shadow: 0 0 24px rgba(255, 0, 170, 0.5);
+}
+
+@media (max-width: 768px) {
+  .menu { padding: 1.4rem 2rem; }
+  .menuItem { display: none; }
+}

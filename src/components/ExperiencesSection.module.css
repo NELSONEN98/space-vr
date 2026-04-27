@@ -1,0 +1,259 @@
+.section {
+  padding: 10rem 5rem;
+  background: var(--color-bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid de fondo */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+  background-size: 8rem 8rem;
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--border-accent);
+  background: var(--color-accent-glow);
+  width: fit-content;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 5.2rem;
+  font-weight: 900;
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 24px rgba(0, 240, 255, 0.3);
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  color: var(--color-text-secondary);
+  max-width: 50rem;
+  letter-spacing: 0.05em;
+}
+
+.subtitlePrompt {
+  color: var(--color-accent);
+  margin-right: 0.8rem;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  gap: 2.4rem;
+  max-width: 122rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── CARD GAMING ─────────────── */
+.card {
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-tertiary) 100%);
+  border: 1px solid var(--border-accent);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 95% 100%, 0 100%);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), 0 0 60px rgba(0, 240, 255, 0.1);
+}
+
+/* Brackets esquineros en cada card */
+.cornerTL, .cornerTR, .cornerBL, .cornerBR {
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-color: var(--color-accent);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .cornerTL,
+.card:hover .cornerTR,
+.card:hover .cornerBL,
+.card:hover .cornerBR { opacity: 1; }
+
+.cornerTL { top: 0.6rem; left: 0.6rem;    border-top: 1.5px solid; border-left: 1.5px solid; }
+.cornerTR { top: 0.6rem; right: 0.6rem;   border-top: 1.5px solid; border-right: 1.5px solid; }
+.cornerBL { bottom: 0.6rem; left: 0.6rem; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.cornerBR { bottom: 0.6rem; right: 0.6rem; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 1.8rem;
+  border-bottom: 1px solid var(--border-accent);
+  background: rgba(0, 240, 255, 0.04);
+}
+
+.cardCode {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-secondary);
+}
+
+.cardDifficulty {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.cardEmoji {
+  font-size: 6rem;
+  padding: 4rem 2rem;
+  background:
+    radial-gradient(circle at center, rgba(0, 240, 255, 0.15) 0%, transparent 70%),
+    linear-gradient(135deg, rgba(255, 0, 170, 0.08), transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardEmoji span {
+  filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.4));
+  transition: transform 0.4s ease;
+}
+
+.card:hover .cardEmoji span {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  box-shadow: 0 0 8px var(--color-accent);
+  opacity: 0;
+  animation: cardScan 3s linear infinite;
+}
+
+.card:hover .scanLine { opacity: 1; }
+
+@keyframes cardScan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(160px); }
+}
+
+.cardContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.cardGenre {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.cardDescription {
+  font-size: 1.4rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 1.6rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--border-accent);
+  border-bottom: 1px solid var(--border-accent);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.1em;
+}
+
+.metaIcon {
+  color: var(--color-accent);
+  margin-right: 0.4rem;
+}
+
+.cardBtn {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.25em;
+  padding: 1.2rem;
+  background: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--border-accent);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 0.4rem;
+}
+
+.cardBtn:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .section { padding: 8rem 2rem; }
+  .title { font-size: 3.4rem; }
+  .grid { grid-template-columns: 1fr; }
+}
